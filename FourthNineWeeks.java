@@ -1,6 +1,11 @@
+import javafx.application.Application;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 public class FourthNineWeeks {
 
     public static void converter()
@@ -12,7 +17,7 @@ public class FourthNineWeeks {
 
         JTextField t1, t2;
 
-        JButton b1, b2, b3;
+        JButton b1, b2, b3, b4;
 
         l1 = new JLabel("Rupees:");
         l1.setBounds(20, 40, 60, 30);
@@ -30,6 +35,8 @@ public class FourthNineWeeks {
         b2.setBounds(190, 80, 60, 15);
         b3 = new JButton("close");
         b3.setBounds(150, 150, 60, 30);
+        b4 = new JButton("Inflation Chart");
+        b4.setBounds(150, 200, 60, 30);
 
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
@@ -65,6 +72,13 @@ public class FourthNineWeeks {
             }
         });
 
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Application.launch(BarChartSample.class);
+            }
+        });
+
         f.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e)
             {
@@ -79,6 +93,7 @@ public class FourthNineWeeks {
         f.add(b1);
         f.add(b2);
         f.add(b3);
+        f.add(b4);
 
         f.setLayout(null);
         f.setSize(400, 300);
