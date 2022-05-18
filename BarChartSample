@@ -1,0 +1,39 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
+
+public class BarChartSample extends Application {
+    final static String USD = "USD";
+    final static String Rupee = "rupee";
+    final static String Euro = "Euro";
+    final static String AustralianDollar = "Australian Dollar";
+    final static String JapaneseYen = "Japanese Yen";
+
+    @Override public void start(Stage stage) {
+        stage.setTitle("Inflation Chart");
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final BarChart<String,Number> bc =
+                new BarChart<String,Number>(xAxis,yAxis);
+        bc.setTitle("1 USD to Other Currencies");
+        xAxis.setLabel("Currency");
+        yAxis.setLabel("Dollar Amount");
+
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("rate");
+        series1.getData().add(new XYChart.Data(USD, 1));
+        series1.getData().add(new XYChart.Data(Rupee, 77.76));
+        series1.getData().add(new XYChart.Data(Euro, .95));
+        series1.getData().add(new XYChart.Data(AustralianDollar, 1.43));
+        series1.getData().add(new XYChart.Data(JapaneseYen, 128.14));
+
+
+        Scene scene  = new Scene(bc,800,600);
+        bc.getData().addAll(series1);
+        stage.setScene(scene);
+        stage.show();
+    }}
